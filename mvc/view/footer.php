@@ -1,0 +1,3 @@
+<footer>
+    &copy; ArcheLab
+</footer>
