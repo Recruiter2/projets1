@@ -1,10 +1,24 @@
 <?php
 
-function ajouterUser($pseudo, $email, $mdp, $c) {
-    global $c;
-    $sql = "insert into users (pseudo, mdp, email) VALUES ( $pseudo, $mdp, $email);";
-    mysqli_query($c, $sql);
-    echo'rein du tuut';
+function ajouterUser($c) {
+    //global $c;
+    if (isset($_POST["action"])) {
+
+        //---------------------------------------------
+        if ($_POST["action"] == "add") {
+
+            $pseudo = mysqli_real_escape_string($c, $_POST["user"]);
+            $mdp = mysqli_real_escape_string($c, $_POST["mdp"]);
+            $email = mysqli_real_escape_string($c, $_POST["email"]);
+            /*= $_POST['user'];
+            = $_POST['mdp'];
+            = $_POST['email'];*/
+            $sql = "INSERT INTO `users` (`id`, `pseudo`, `mdp`, `role`, `email`) VALUES (NULL, '$pseudo', '$mdp', '', '$email');";
+            mysqli_query($c, $sql);
+            echo 'rein du tuut';
+            var_dump($sql);
+        }
+    }
 }
 
 function incription_formulaire() {

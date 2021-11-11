@@ -1,8 +1,8 @@
 <?php
+include_once "../db.php";
 include_once "../model/archelab.php";
 if ($_POST["action"] == "add") {
 
-    ajouterUser($_POST['user'],
-        $_POST['email'], $_POST['mdp']);
+    ajouterUser($c);
     echo 'ok';
 }
