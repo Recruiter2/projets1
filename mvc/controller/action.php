@@ -4,5 +4,7 @@ include_once "../model/archelab.php";
 if ($_POST["action"] == "add") {
 
     ajouterUser($c);
-    echo 'ok';
+    //echo 'ok';
 }
+
+header("Location: ../?page=connexion");

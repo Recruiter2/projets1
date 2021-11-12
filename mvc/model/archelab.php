@@ -15,8 +15,8 @@ function ajouterUser($c) {
             = $_POST['email'];*/
             $sql = "INSERT INTO `users` (`id`, `pseudo`, `mdp`, `role`, `email`) VALUES (NULL, '$pseudo', '$mdp', '', '$email');";
             mysqli_query($c, $sql);
-            echo 'rein du tuut';
-            var_dump($sql);
+            //echo 'rein du tuut';
+            //var_dump($sql);
         }
     }
 }
