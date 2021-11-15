@@ -5,9 +5,9 @@
     <p>Pseudo :</p>
     <input type = "text" name="user">
     <p>Email :</p>
-    <input type = "email" name="user">
+    <input type = "email" name="email">
     <p>Mot de passe :</p>
-    <input type = "text" name="mdp">
+    <input type = "password" name="mdp">
     <br>
     <input type = "submit" value = "creer">
 </form>
