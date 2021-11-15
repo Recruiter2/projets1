@@ -2,11 +2,9 @@
 
 
 <form action = "index.php" method = "post">
+    <input type="hidden" name="action" value="connexion">
     <p>Pseudo :</p>
-    <input type = "text" name="user">
-
-
-
+    <input type = "text" name="pseudo">
     <p>Mot de passe :</p>
     <input type = "password" name="mdp">
 <br>
