@@ -1,15 +1,15 @@
 <?php
 
-function ajouterUser($c) {
-    //global $c;
-    if (isset($_POST["action"])) {
+function ajouterUser($user,$email,$mdp) {
+    global $c;
+    //if (isset($_POST["action"])) {
 
         //---------------------------------------------
-        if ($_POST["action"] == "add") {
+        //if ($_POST["action"] == "add") {
 
-            $pseudo = mysqli_real_escape_string($c, $_POST["user"]);
-            $mdp = mysqli_real_escape_string($c, $_POST["mdp"]);
-            $email = mysqli_real_escape_string($c, $_POST["email"]);
+            $pseudo = mysqli_real_escape_string($c, $user);
+            $mdp = mysqli_real_escape_string($c, $mdp);
+            $email = mysqli_real_escape_string($c, $email);
             /*= $_POST['user'];
             = $_POST['mdp'];
             = $_POST['email'];*/
@@ -17,25 +17,24 @@ function ajouterUser($c) {
             mysqli_query($c, $sql);
             //echo 'rein du tuut';
             //var_dump($sql);
-        }
+
+
+
+}
+function connexion($pseudo,$mdp) {
+    global $c;
+    //$sql = "SELECT * FROM `users` WHERE `pseudo` = '" . $pseudo . "' and `mdp`= '". $mdp ."'" ;
+    $sql = "SELECT count(*) FROM `users` WHERE `pseudo` = '" . $pseudo . "' and `mdp`= '". $mdp ."'" ;
+    $exec_requete = mysqli_query($c,$sql);
+    //var_dump($sql);
+
+    $reponse = mysqli_fetch_array($exec_requete);
+    return $reponse['count(*)'];
+    /*$res = [];
+    while($row = mysqli_fetch_assoc($result)){
+        $res[] = $row;
     }
+    return $res;*/
 }
 
-function incription_formulaire() {
-    ?>
-<h2>Creer compte</h2>
 
-<form action = "controller/action.php" method = "post">
-    <input type="hidden" name="action" value="add">
-    <p>Pseudo :</p>
-    <input type = "text" name="user">
-    <p>Email :</p>
-    <input type = "email" name="email">
-    <p>Mot de passe :</p>
-    <input type = "text" name="mdp">
-    <br>
-    <input type = "submit" value = "creer">
-</form>
-
-<?php
-}
