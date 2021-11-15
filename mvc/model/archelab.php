@@ -21,13 +21,13 @@ function ajouterUser($user,$email,$mdp) {
 
 
 }
-function connexion($user, $mdp){
-
-}
-function get_all_account($psewudo,$mdp) {
+function connexion($pseudo,$mdp) {
     global $c;
-    $sql = "select count(*) FROM users where pseudo =".$pseudo." and mdp = ".$mdp;
+    //$sql = "SELECT * FROM `users` WHERE `pseudo` = '" . $pseudo . "' and `mdp`= '". $mdp ."'" ;
+    $sql = "SELECT count(*) FROM `users` WHERE `pseudo` = '" . $pseudo . "' and `mdp`= '". $mdp ."'" ;
     $exec_requete = mysqli_query($c,$sql);
+    //var_dump($sql);
+
     $reponse = mysqli_fetch_array($exec_requete);
     return $reponse['count(*)'];
     /*$res = [];

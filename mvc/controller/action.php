@@ -22,20 +22,24 @@ if (isset($_POST["action"])) {
 //formulaire de connexion
 if (isset($_POST["action"])) {
     if ($_POST["action"] == "connexion") {
-        echo 'ok';
         if (isset($_POST['pseudo']) && isset($_POST['mdp'])) {
             if ($_POST['mdp'] != "" && $_POST['pseudo'] != "") {
-                $count = get_all_account($_POST['pseudo'], $_POST['mdp']);
-                if ($count != 0) // nom d'utilisateur et mot de passe correctes
-                {
+                $count = connexion($_POST['pseudo'], $_POST['mdp']);
+                if ($count != 0) {// nom d'utilisateur et mot de passe correcte
+                    var_dump($count);
                     $_SESSION['username'] = $_POST['pseudo'];
-                    echo $_SESSION['username'];
-                    header("Location: .");
+                    echo 'username';
+                    //header("Location: .");
+                } else {
+                    echo "err";
+                    //header("Location: ./?page=connexion");
                 }
-            } else {
-                echo "err";
-                header("Location: ../?page=connexion");
+            }
+                else {
+                    echo "err";
+                    //header("Location: ./?page=connexion");
+
+            }
             }
         }
     }
-}
