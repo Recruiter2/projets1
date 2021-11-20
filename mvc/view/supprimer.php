@@ -7,6 +7,7 @@
 //    // something like this is optional, of course
 //}
 
-if (isset($_session["id"])) {
+if ($_SESSION['loggedin'] = true) {
+    echo "Supprimer mon compte";
     echo "<td><a class='button' href=\"controller/delete.php?id=" . $_SESSION["id"][0] . "\">Delete</a></td>";
 }

@@ -28,6 +28,7 @@ if (isset($_POST["action"])) {
                 if ($count != 0) {// nom d'utilisateur et mot de passe correcte
                     //var_dump($count);
                     $_SESSION['username'] = $_POST['pseudo'];
+                    $_SESSION['loggedin'] = true;
                     echo "Bienvenu " . $_SESSION['username'];
                     //header("Location: .");
                 } else {
