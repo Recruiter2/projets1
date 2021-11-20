@@ -15,7 +15,7 @@ function ajouterUser($user,$email,$mdp) {
             = $_POST['email'];*/
             $sql = "INSERT INTO `users` (`id`, `pseudo`, `mdp`, `role`, `email`) VALUES (NULL, '$pseudo', '$mdp', '', '$email');";
             mysqli_query($c, $sql);
-            //echo 'rein du tuut';
+
             //var_dump($sql);
 
 
@@ -55,3 +55,32 @@ function connexion($pseudo,$mdp) {
 }
 
 
+function delete_user_db($c) {
+
+    //if ($_GET["action"] == "delete") {
+
+    // requête DELETE
+    // Check connection
+
+    if (mysqli_connect_errno()) {
+        echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    }
+
+    if (isset($_GET["id"])) {
+        $id = $_GET['id']; // $id is now defined
+        //echo $id;
+        $sql = "DELETE FROM users WHERE id='".$id."'";
+        //echo $sql;
+        mysqli_query($c,$sql);
+        //mysqli_close($c);
+        session_destroy();
+    };
+// or assuming your column is indeed an int
+// $id = (int)$_GET['id'];
+
+
+
+    //}
+    //}
+
+}

@@ -47,3 +47,8 @@ if (isset($_POST["action"])) {
             }
         }
     }
+
+
+//traitement de la requête suppression utilisateur
+
+delete_user_db($c);

@@ -1,4 +1,4 @@
-<h2>user</h2>
+<h2>Connectez vous</h2>
 
 
 <form action = "index.php" method = "post">
