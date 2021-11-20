@@ -74,7 +74,7 @@ function delete_user_db($c) {
         mysqli_query($c,$sql);
         //mysqli_close($c);
         session_destroy();
-        echo "votre compte a été supprimé."
+        echo "votre compte a été supprimé.";
     };
 // or assuming your column is indeed an int
 // $id = (int)$_GET['id'];
