@@ -26,17 +26,20 @@ if (isset($_POST["action"])) {
             if ($_POST['mdp'] != "" && $_POST['pseudo'] != "") {
                 $count = connexion($_POST['pseudo'], $_POST['mdp']);
                 if ($count != 0) {// nom d'utilisateur et mot de passe correcte
-                    var_dump($count);
+                    //var_dump($count);
                     $_SESSION['username'] = $_POST['pseudo'];
-                    echo 'username';
+                    echo "Bienvenu " . $_SESSION['username'];
                     //header("Location: .");
                 } else {
-                    echo "err";
+                    echo "err1 erreur sur le mot de passe ou pseudo";
+                    echo "2 eme possibilité : erreur vous êtes déjà connecté en tant que : ";
+                    var_dump($_SESSION);
                     //header("Location: ./?page=connexion");
                 }
             }
                 else {
-                    echo "err";
+                    echo "Vous êtes connecté en tant que " . $_SESSION['username'] . "  ";
+                    echo "err2 vous etes deja connecte?";
                     //header("Location: ./?page=connexion");
 
             }
