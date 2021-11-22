@@ -1,5 +1,7 @@
 <?php
 
+
+
 function ajouterUser($user,$email,$mdp) {
     global $c;
     //if (isset($_POST["action"])) {
@@ -84,6 +86,18 @@ function delete_user_db($c) {
     //}
     //}
 
+}
+function recup_role($pseu){
+    global $c;
+    $sql = "select pseudo, role FROM `users`";
+    $resultat = mysqli_query($c,$sql);
+    $role = "";
+    while ($row = mysqli_fetch_assoc($resultat)){
+        if ($pseu == $row['pseudo']){
+            $role = $row["role"];
+        }
+    }
+    return $role;
 }
 
 
