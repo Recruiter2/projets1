@@ -1,6 +1,6 @@
 <h2>Creer compte</h2>
 
-<form action = "controller/action.php" method = "post">
+<form action = "." method = "post">
     <input type="hidden" name="action" value="add">
     <p>Pseudo :</p>
     <input type = "text" name="user">
