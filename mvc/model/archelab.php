@@ -57,36 +57,7 @@ function connexion($pseudo,$mdp) {
 }
 
 
-function delete_user_db() {
-    //global $c
-    //if ($_GET["action"] == "delete") {
 
-    // requête DELETE
-    // Check connection
-
-    if (mysqli_connect_errno()) {
-        echo "Failed to connect to MySQL: " . mysqli_connect_error();
-    }
-
-    if (isset($_GET["id"])) {
-        $id = $_GET['id']; // $id is now defined
-        //echo $id;
-        $sql = "DELETE FROM users WHERE id='".$id."'";
-        //echo $sql;
-        mysqli_query($c,$sql);
-        //mysqli_close($c);
-        session_destroy();
-        echo "votre compte a été supprimé.";
-    };
-// or assuming your column is indeed an int
-// $id = (int)$_GET['id'];
-
-
-
-    //}
-    //}
-
-}
 function recup_role($pseu){
     global $c;
     $sql = "select pseudo, role FROM `users`";

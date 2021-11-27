@@ -73,6 +73,17 @@ if (isset($_POST["action"])) {
     }
 }
 
+//formulaire de suppression de compte
 
+if (isset($_GET["id"])) {
+    $id = $_GET['id']; // $id is now defined
+    //echo $id;
+    $sql = "DELETE FROM users WHERE id='".$id."'";
+    //echo $sql;
+    mysqli_query($c,$sql);
+    //mysqli_close($c);
+    session_destroy();
+    echo "votre compte a été supprimé.";
+}
 
 
