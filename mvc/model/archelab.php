@@ -57,8 +57,8 @@ function connexion($pseudo,$mdp) {
 }
 
 
-function delete_user_db($c) {
-
+function delete_user_db() {
+    //global $c
     //if ($_GET["action"] == "delete") {
 
     // requête DELETE

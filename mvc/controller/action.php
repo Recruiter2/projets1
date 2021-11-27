@@ -1,21 +1,23 @@
 <?php
 
-$isconnect = false;
-if (isset($_SESSION["connecte"])) {
-    if ($_SESSION["connecte"] == true) {
-        $isconnect = true;
-    }
-} else {
-    $isconnect = false;
-}
+//$isconnect = false;
+//if (isset($_SESSION["connecte"])) {
+//    if ($_SESSION["connecte"] == true) {
+//        $isconnect = true;
+//    }
+//} else {
+//    $isconnect = false;
+//}
 
-if (isset($_GET["connecte"])) {
-    if ($_GET["connecte"] == false) {
-        unset($_SESSION['username']);
-        unset($_SESSION['connecte']);
-        unset($_SESSION['role']);
-        header('location:.');
-    }
+if (isset($_GET["connecte"]) && $_GET["connecte"] == "false") {
+    //var_dump($_SESSION);
+    unset($_SESSION['username']);
+    unset($_SESSION['connecte']);
+    unset($_SESSION['role']);
+    session_destroy();
+    //$_SESSION['connecte'] = false;
+    //var_dump($_SESSION);
+    header('location:.');
 }
 
 
@@ -52,7 +54,7 @@ if (isset($_POST["action"])) {
                     $_SESSION['connecte'] = true;
                     $_SESSION['role'] = recup_role($_POST['pseudo']);
 
-                    var_dump($_SESSION['role']);
+                    //var_dump($_SESSION['role']);
                     echo "Bienvenu " . $_SESSION['username'];
                     //header("Location: .");
                 } else {
