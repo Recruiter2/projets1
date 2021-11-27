@@ -73,6 +73,20 @@ if (isset($_POST["action"])) {
     }
 }
 
+//formulaire de modification de compte
+
+if (isset($_GET["id"])) {
+    $id = $_GET['id']; // $id is now defined
+    //echo $id;
+    $sql = "DELETE FROM users WHERE id='".$id."'";
+    //echo $sql;
+    mysqli_query($c,$sql);
+    //mysqli_close($c);
+    //session_destroy();
+    echo "votre compte a été supprimé.";
+}
+
+
 //formulaire de suppression de compte
 
 if (isset($_GET["id"])) {
@@ -82,7 +96,7 @@ if (isset($_GET["id"])) {
     //echo $sql;
     mysqli_query($c,$sql);
     //mysqli_close($c);
-    session_destroy();
+    //session_destroy();
     echo "votre compte a été supprimé.";
 }
 

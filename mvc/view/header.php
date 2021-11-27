@@ -15,7 +15,7 @@
 <h1> Arche </h1>
 
 <ul>
-    <li><a href =" index.php?page=creer">Créer post</a></li>
+    <li><a href ="index.php?page=creer">Créer post</a></li>
 
     <?php
 
@@ -25,14 +25,14 @@
 
         //var_dump($isConnected . "heder?php");
         echo '<li><a href ="index.php?connecte=false">Deconnexion</a></li>';
-        echo '<li><a href ="index.php?page=false">supprimer</a></li>';
+        echo '<li><a href ="index.php?page=supprimer">supprimer</a></li>';
 
     }
     else  {
         if (isset($_SESSION["connecte"])) var_dump($_SESSION["connecte"]);
         echo'
            
-    <li><a href =" index.php?page=supprimer">Supprimer</a></li>
+    
     
     <li><a href =" index.php?page=connexion">Connexion</a></li> ';
     }
