@@ -10,7 +10,11 @@
 //}
 
 if (isset($_GET["connecte"]) && $_GET["connecte"] == "false") {
+<<<<<<< HEAD
+    var_dump($_SESSION);
+=======
     //var_dump($_SESSION);
+>>>>>>> f8145b540b6a11813134f8f979b0418f6ed59305
     unset($_SESSION['username']);
     unset($_SESSION['connecte']);
     unset($_SESSION['role']);
@@ -54,7 +58,11 @@ if (isset($_POST["action"])) {
                     $_SESSION['connecte'] = true;
                     $_SESSION['role'] = recup_role($_POST['pseudo']);
 
+<<<<<<< HEAD
+                    var_dump($_SESSION['role']);
+=======
                     //var_dump($_SESSION['role']);
+>>>>>>> f8145b540b6a11813134f8f979b0418f6ed59305
                     echo "Bienvenu " . $_SESSION['username'];
                     //header("Location: .");
                 } else {
@@ -73,6 +81,9 @@ if (isset($_POST["action"])) {
     }
 }
 
+<<<<<<< HEAD
+
+=======
 //formulaire de modification de compte
 
 if (isset($_GET["id"])) {
@@ -99,5 +110,6 @@ if (isset($_GET["id"])) {
     //session_destroy();
     echo "votre compte a été supprimé.";
 }
+>>>>>>> f8145b540b6a11813134f8f979b0418f6ed59305
 
 
