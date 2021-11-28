@@ -57,7 +57,7 @@ function connexion($pseudo,$mdp) {
 }
 
 
-<<<<<<< HEAD
+
 function delete_user_db() {
     //global $c
     //if ($_GET["action"] == "delete") {
@@ -88,9 +88,9 @@ function delete_user_db() {
     //}
 
 }
-=======
 
->>>>>>> f8145b540b6a11813134f8f979b0418f6ed59305
+
+
 function recup_role($pseu){
     global $c;
     $sql = "select pseudo, role FROM `users`";
@@ -105,7 +105,7 @@ function recup_role($pseu){
 }
 
 
-<<<<<<< HEAD
+
 function delete_topic(){
 	if (mysqli_connect_errno()) {
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -116,5 +116,3 @@ function delete_topic(){
         mysqli_query($c,$sql);
         echo "Le topic a été supprimé.";
     };
-=======
->>>>>>> f8145b540b6a11813134f8f979b0418f6ed59305
