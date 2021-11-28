@@ -1,19 +1,42 @@
 <?php
+
+//$isconnect = false;
+//if (isset($_SESSION["connecte"])) {
+//    if ($_SESSION["connecte"] == true) {
+//        $isconnect = true;
+//    }
+//} else {
+//    $isconnect = false;
+//}
+
+if (isset($_GET["connecte"]) && $_GET["connecte"] == "false") {
+    //var_dump($_SESSION);
+    unset($_SESSION['username']);
+    unset($_SESSION['connecte']);
+    unset($_SESSION['role']);
+    session_destroy();
+    //$_SESSION['connecte'] = false;
+    //var_dump($_SESSION);
+    header('location:.');
+}
+
+
 $page = 'home';
 if (isset($_GET['page'])) {
     $page = $_GET['page'];
 }
+
+
 //formulaire de création de compte
 if (isset($_POST["action"])) {
     if ($_POST["action"] == "add") {
-        if (isset($_POST['user']) && isset($_POST['email'])  && isset($_POST['mdp'])){
-            if ($_POST['mdp'] !="" && $_POST['user']!="" && $_POST['email'] != "") {
+        if (isset($_POST['user']) && isset($_POST['email']) && isset($_POST['mdp'])) {
+            if ($_POST['mdp'] != "" && $_POST['user'] != "" && $_POST['email'] != "") {
                 ajouterUser($_POST["user"], $_POST["email"], $_POST["mdp"]);
                 //echo 'ok';
-                header("Location: ../?page=connexion");
-            }
-            else{
-                echo'information incorect';
+                header("Location: ./?page=connexion");
+            } else {
+                echo 'information incorect';
             }
 
         }
@@ -26,20 +49,64 @@ if (isset($_POST["action"])) {
             if ($_POST['mdp'] != "" && $_POST['pseudo'] != "") {
                 $count = connexion($_POST['pseudo'], $_POST['mdp']);
                 if ($count != 0) {// nom d'utilisateur et mot de passe correcte
-                    var_dump($count);
+                    //var_dump($count);
                     $_SESSION['username'] = $_POST['pseudo'];
-                    echo 'username';
+                    $_SESSION['connecte'] = true;
+                    $_SESSION['role'] = recup_role($_POST['pseudo']);
+
+                    //var_dump($_SESSION['role']);
+                    echo "Bienvenu " . $_SESSION['username'];
                     //header("Location: .");
                 } else {
-                    echo "err";
+                    echo "err1 erreur sur le mot de passe ou pseudo";
+                    echo "2 eme possibilité : erreur vous êtes déjà connecté en tant que : ";
+                    var_dump($_SESSION);
                     //header("Location: ./?page=connexion");
                 }
-            }
-                else {
-                    echo "err";
-                    //header("Location: ./?page=connexion");
+            } else {
+                echo "Vous êtes connecté en tant que " . $_SESSION['username'] . "  ";
+                echo "err2 vous etes deja connecte?";
+                //header("Location: ./?page=connexion");
 
-            }
             }
         }
     }
+}
+
+//formulaire de modification de compte
+
+if (isset($_SESSION["id"][0]) and isset($_POST['mdp'])) {
+    if ($_POST["action"] == "modifier") {
+        $id = $_SESSION['id'][0]; // $id is now defined
+        $password = $_POST['mdp'];
+        $mail = $_POST['email'];
+        $pseudo = $_POST['user'];
+        //echo $id;
+        $sql = "UPDATE `users` SET `mdp` = '" . $password . "', `email` = '" . $mail . "', `pseudo` = '" . $pseudo . "' WHERE `users`.`id` = '" . $id . "'";
+        //echo $sql; // inutile de tenter de debug ici
+        mysqli_query($c, $sql);
+        //mysqli_close($c);
+        //session_destroy();
+        echo "Votre compte a été mis à jour.";
+    }
+}
+
+
+//formulaire de suppression de compte
+
+if (isset($_GET["id"])) {
+
+    $id = $_GET['id']; // $id is now defined
+    //echo $id;
+    $sql = "DELETE FROM users WHERE id='".$id."'";
+    //echo $sql;
+    mysqli_query($c,$sql);
+    //mysqli_close($c);
+    session_destroy();
+    echo "votre compte a été supprimé.";
+    unset($_GET["id"]);
+    //sleep(5);
+    //header("refresh:10;url:.");
+}
+
+

@@ -1,14 +1,18 @@
-<h2>user</h2>
+<h2>Connectez vous</h2>
 
-
-<form action = "index.php" method = "post">
+<div class="section">
+<form  action = "index.php" method = "post">
     <input type="hidden" name="action" value="connexion">
     <p>Pseudo :</p>
     <input type = "text" name="pseudo">
     <p>Mot de passe :</p>
     <input type = "password" name="mdp">
 <br>
-    <input type = "submit" value = "connexion">
+    <input class="button" type = "submit" value = "connexion">
+    </br>
+    </br>
+    <p></p>
+    <a class="button" href="?page=inscription">creer un compte</a>
 </form>
 
-<a href="?page=inscription">creer un compte</a>
+</div>

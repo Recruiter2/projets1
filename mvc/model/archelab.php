@@ -1,5 +1,7 @@
 <?php
 
+
+
 function ajouterUser($user,$email,$mdp) {
     global $c;
     //if (isset($_POST["action"])) {
@@ -15,7 +17,7 @@ function ajouterUser($user,$email,$mdp) {
             = $_POST['email'];*/
             $sql = "INSERT INTO `users` (`id`, `pseudo`, `mdp`, `role`, `email`) VALUES (NULL, '$pseudo', '$mdp', '', '$email');";
             mysqli_query($c, $sql);
-            //echo 'rein du tuut';
+
             //var_dump($sql);
 
 
@@ -26,15 +28,47 @@ function connexion($pseudo,$mdp) {
     //$sql = "SELECT * FROM `users` WHERE `pseudo` = '" . $pseudo . "' and `mdp`= '". $mdp ."'" ;
     $sql = "SELECT count(*) FROM `users` WHERE `pseudo` = '" . $pseudo . "' and `mdp`= '". $mdp ."'" ;
     $exec_requete = mysqli_query($c,$sql);
-    //var_dump($sql);
 
+//    echo "<br>";
+//    var_dump($sql);
+//    echo "<br>";
+//    var_dump($exec_requete);
+//    echo "<br>";
     $reponse = mysqli_fetch_array($exec_requete);
+
+    //var_dump($reponse);
+
+    $sql = "SELECT id FROM `users` WHERE `pseudo` = '" . $pseudo . "' and `mdp`= '". $mdp ."'" ;
+    $exec_requete = mysqli_query($c,$sql);
+    $reponse2 = mysqli_fetch_array($exec_requete);
+    $_SESSION['id'] = $reponse2;
+
     return $reponse['count(*)'];
+    return $_SESSION;
+
+
+
+    var_dump($exec_requete);
     /*$res = [];
     while($row = mysqli_fetch_assoc($result)){
         $res[] = $row;
     }
     return $res;*/
+}
+
+
+
+function recup_role($pseu){
+    global $c;
+    $sql = "select pseudo, role FROM `users`";
+    $resultat = mysqli_query($c,$sql);
+    $role = "";
+    while ($row = mysqli_fetch_assoc($resultat)){
+        if ($pseu == $row['pseudo']){
+            $role = $row["role"];
+        }
+    }
+    return $role;
 }
 
 
