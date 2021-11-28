@@ -75,29 +75,38 @@ if (isset($_POST["action"])) {
 
 //formulaire de modification de compte
 
-if (isset($_GET["id"])) {
-    $id = $_GET['id']; // $id is now defined
-    //echo $id;
-    $sql = "DELETE FROM users WHERE id='".$id."'";
-    //echo $sql;
-    mysqli_query($c,$sql);
-    //mysqli_close($c);
-    //session_destroy();
-    echo "votre compte a été supprimé.";
+if (isset($_SESSION["id"][0]) and isset($_POST['mdp'])) {
+    if ($_POST["action"] == "modifier") {
+        $id = $_SESSION['id'][0]; // $id is now defined
+        $password = $_POST['mdp'];
+        $mail = $_POST['email'];
+        $pseudo = $_POST['user'];
+        //echo $id;
+        $sql = "UPDATE `users` SET `mdp` = '" . $password . "', `email` = '" . $mail . "', `pseudo` = '" . $pseudo . "' WHERE `users`.`id` = '" . $id . "'";
+        //echo $sql; // inutile de tenter de debug ici
+        mysqli_query($c, $sql);
+        //mysqli_close($c);
+        //session_destroy();
+        echo "Votre compte a été mis à jour.";
+    }
 }
 
 
 //formulaire de suppression de compte
 
 if (isset($_GET["id"])) {
+
     $id = $_GET['id']; // $id is now defined
     //echo $id;
     $sql = "DELETE FROM users WHERE id='".$id."'";
     //echo $sql;
     mysqli_query($c,$sql);
     //mysqli_close($c);
-    //session_destroy();
+    session_destroy();
     echo "votre compte a été supprimé.";
+    unset($_GET["id"]);
+    //sleep(5);
+    //header("refresh:10;url:.");
 }
 
 
