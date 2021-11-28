@@ -1,4 +1,4 @@
 <?php
-//function deconnexion($c) {
-//    session_unset();
-//}
+function deconnexion($c) {
+    session_unset();
+}

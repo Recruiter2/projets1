@@ -14,17 +14,18 @@
 <body>
 <h1> Arche </h1>
 
-<div id="div_top_hypers">
-<ul id="ul_top_hypers">
-    <li class="button"><a href ="index.php?page=creer" class="button">Créer post</a></li>
+<ul>
+    <li><a href ="index.php?page=creer">Créer post</a></li>
 
     <?php
 
     if (isset($_SESSION["connecte"]) && $_SESSION["connecte"]){
         //var_dump($_SESSION["connecte"]);
-        echo '<li class="button"><a href ="index.php?page=modifier" class="button">modifier</a></li>';
-        echo '<li class="button"><a href ="index.php?connecte=false" class="button">Deconnexion</a></li>';
-        echo '<li class="button"><a href ="index.php?page=supprimer" class="button">supprimer</a></li>';
+        echo  '<li><a href ="index.php?page=modifier">modifier</a></li>';
+
+        //var_dump($isConnected . "heder?php");
+        echo '<li><a href ="index.php?connecte=false">Deconnexion</a></li>';
+        echo '<li><a href ="index.php?page=supprimer">supprimer</a></li>';
 
     }
     else  {
@@ -33,10 +34,9 @@
            
     
     
-    <li class="button"><a href =" index.php?page=connexion" class="button">Connexion</a></li> ';
+    <li><a href =" index.php?page=connexion">Connexion</a></li> ';
     }
     ?>
 
 </ul>
 
-</div>

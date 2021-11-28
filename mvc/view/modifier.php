@@ -1,10 +1,9 @@
 
 <h2>Modifier compte</h2>
-<p>Remplissez tous les champs pour modifier votre compte</p>
+<p>Entrer quelle partie vous souhaiter modifier 1 ou plusieurs</p>
 
-<div class="section">
-<form  action = "." method = "post">
-    <input type="hidden" name="action" value="modifier">
+<form action = "." method = "post">
+    <input type="hidden" name="action" value="update">
     <p>Pseudo :</p>
     <input type = "text" name="user">
     <p>Email :</p>
@@ -12,11 +11,5 @@
     <p>Mot de passe :</p>
     <input type = "password" name="mdp">
     <br>
-    <input class="button" type = "submit" value = "modifier">
+    <input type = "submit" value = "modifier">
 </form>
-</div>
-<?php
-//var_dump($_SESSION);
-//echo "<br>";
-//var_dump($_SESSION['id'][0]);
-

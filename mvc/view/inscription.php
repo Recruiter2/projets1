@@ -1,6 +1,5 @@
 <h2>Creer compte</h2>
 
-<div class="section">
 <form action = "." method = "post">
     <input type="hidden" name="action" value="add">
     <p>Pseudo :</p>
@@ -12,4 +11,3 @@
     <br>
     <input type = "submit" value = "creer">
 </form>
-</div>
