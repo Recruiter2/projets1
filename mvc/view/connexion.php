@@ -9,6 +9,7 @@
     <input type = "password" name="mdp">
 <br>
     <input type = "submit" value = "connexion">
+
+    <a class="button" href="?page=inscription">creer un compte</a>
 </form>
 
-<a href="?page=inscription">creer un compte</a>

@@ -10,11 +10,11 @@
 //}
 
 if (isset($_GET["connecte"]) && $_GET["connecte"] == "false") {
-<<<<<<< HEAD
+
     var_dump($_SESSION);
-=======
+
     //var_dump($_SESSION);
->>>>>>> f8145b540b6a11813134f8f979b0418f6ed59305
+
     unset($_SESSION['username']);
     unset($_SESSION['connecte']);
     unset($_SESSION['role']);
@@ -58,12 +58,12 @@ if (isset($_POST["action"])) {
                     $_SESSION['connecte'] = true;
                     $_SESSION['role'] = recup_role($_POST['pseudo']);
 
-<<<<<<< HEAD
-                    var_dump($_SESSION['role']);
-=======
+
                     //var_dump($_SESSION['role']);
->>>>>>> f8145b540b6a11813134f8f979b0418f6ed59305
-                    echo "Bienvenu " . $_SESSION['username'];
+
+                    //var_dump($_SESSION['role']);
+
+                    echo "<p>Bienvenu " . $_SESSION['username'] ."</p>";
                     //header("Location: .");
                 } else {
                     echo "err1 erreur sur le mot de passe ou pseudo";
@@ -81,20 +81,25 @@ if (isset($_POST["action"])) {
     }
 }
 
-<<<<<<< HEAD
 
-=======
 //formulaire de modification de compte
 
-if (isset($_GET["id"])) {
-    $id = $_GET['id']; // $id is now defined
+if (isset($_POST["action"])) {
+    if ($_POST["action"] == "modifier") {
+if (isset($_SESSION["id"][0] )) {
+    $id = $_SESSION['id'][0]; // $id is now defined
+    $password = $_POST['mdp'];
+    $mail = $_POST['email'];
+    $pseudo =  $_POST['user'];
     //echo $id;
-    $sql = "DELETE FROM users WHERE id='".$id."'";
+    $sql = "UPDATE `users` SET `mdp` = '".$password."', `email` = '".$mail."', `pseudo` = '".$pseudo."' WHERE `users`.`id` = '".$id."'";
     //echo $sql;
     mysqli_query($c,$sql);
     //mysqli_close($c);
     //session_destroy();
-    echo "votre compte a été supprimé.";
+    echo "votre compte a été modifié.";
+}
+    }
 }
 
 
@@ -108,8 +113,8 @@ if (isset($_GET["id"])) {
     mysqli_query($c,$sql);
     //mysqli_close($c);
     //session_destroy();
-    echo "votre compte a été supprimé.";
+    echo "<p>votre compte a été supprimé.</p>";
 }
->>>>>>> f8145b540b6a11813134f8f979b0418f6ed59305
+
 
 

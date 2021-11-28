@@ -15,17 +15,15 @@
 <h1> Arche </h1>
 
 <ul>
-    <li><a href ="index.php?page=creer">Créer post</a></li>
+    <li class="button"><a class="button" href ="index.php?page=creer">Créer post</a></li>
 
     <?php
 
     if (isset($_SESSION["connecte"]) && $_SESSION["connecte"]){
         //var_dump($_SESSION["connecte"]);
-        echo  '<li><a href ="index.php?page=modifier">modifier</a></li>';
-
-        //var_dump($isConnected . "heder?php");
-        echo '<li><a href ="index.php?connecte=false">Deconnexion</a></li>';
-        echo '<li><a href ="index.php?page=supprimer">supprimer</a></li>';
+        echo '<li class="button"><a class="button" href ="index.php?page=modifier">modifier</a></li>';
+        echo '<li class="button"><a class="button" href ="index.php?connecte=false">Deconnexion</a></li>';
+        echo '<li class="button"><a class="button" href ="index.php?page=supprimer">supprimer</a></li>';
 
     }
     else  {
@@ -34,7 +32,7 @@
            
     
     
-    <li><a href =" index.php?page=connexion">Connexion</a></li> ';
+    <li class="button"><a class="button" href =" index.php?page=connexion">Connexion</a></li> ';
     }
     ?>
 

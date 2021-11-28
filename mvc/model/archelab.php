@@ -106,13 +106,15 @@ function recup_role($pseu){
 
 
 
-function delete_topic(){
-	if (mysqli_connect_errno()) {
+/*function delete_topic()
+{
+    if (mysqli_connect_errno()) {
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
-	if (isset($_GET["name"])) and recup_role($_GET["pseu"])=="admin" {
-        $name = $_GET['name']; 
-        $sql = "DELETE FROM name WHERE id='".$name."'";
-        mysqli_query($c,$sql);
-        echo "Le topic a été supprimé.";
-    };
+    if (isset($_GET["name"])) && recup_role($_GET["pseu"]) == "admin" {
+    $name = $_GET['name'];
+    $sql = "DELETE FROM name WHERE id='" . $name . "'";
+    mysqli_query($c, $sql);
+    echo "Le topic a été supprimé.";
+}
+}*/

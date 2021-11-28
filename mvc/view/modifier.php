@@ -1,9 +1,9 @@
 
 <h2>Modifier compte</h2>
-<p>Entrer quelle partie vous souhaiter modifier 1 ou plusieurs</p>
+<p>Veuillez saisir tous les champs</p>
 
 <form action = "." method = "post">
-    <input type="hidden" name="action" value="update">
+    <input type="hidden" name="action" value="modifier">
     <p>Pseudo :</p>
     <input type = "text" name="user">
     <p>Email :</p>

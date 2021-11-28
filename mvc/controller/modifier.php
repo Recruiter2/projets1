@@ -1,6 +1,7 @@
 <?php
-/* debug section
- * session_start();
+// debug section
+session_start();
+include "../db.php";
 echo "reached modifier.php";
 var_dump($_SESSION["id"][0]);
 echo "</br>";
@@ -15,5 +16,5 @@ if (isset($_SESSION["id"][0])) {
     mysqli_query($c,$sql);
     //mysqli_close($c);
     //session_destroy();
-    echo "votre compte a été supprimé.";
-}*/
+    echo "votre compte a été modifié.";
+}
