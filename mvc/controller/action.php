@@ -62,8 +62,9 @@ if (isset($_POST["action"])) {
                     //var_dump($_SESSION['role']);
 
                     //var_dump($_SESSION['role']);
-
-                    echo "<p>Bienvenu " . $_SESSION['username'] ."</p>";
+                    if (isset($_SESSION['username'])) {
+                        echo "<p>Bienvenu " . $_SESSION['username'] . "</p>";
+                    }
                     //header("Location: .");
                 } else {
                     echo "err1 erreur sur le mot de passe ou pseudo";
