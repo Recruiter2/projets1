@@ -10,7 +10,11 @@
 //}
 
 if (isset($_GET["connecte"]) && $_GET["connecte"] == "false") {
+
+    var_dump($_SESSION);
+
     //var_dump($_SESSION);
+
     unset($_SESSION['username']);
     unset($_SESSION['connecte']);
     unset($_SESSION['role']);
@@ -54,8 +58,12 @@ if (isset($_POST["action"])) {
                     $_SESSION['connecte'] = true;
                     $_SESSION['role'] = recup_role($_POST['pseudo']);
 
+
                     //var_dump($_SESSION['role']);
-                    echo "Bienvenu " . $_SESSION['username'];
+
+                    //var_dump($_SESSION['role']);
+
+                    echo "<p>Bienvenu " . $_SESSION['username'] ."</p>";
                     //header("Location: .");
                 } else {
                     echo "err1 erreur sur le mot de passe ou pseudo";
@@ -73,21 +81,24 @@ if (isset($_POST["action"])) {
     }
 }
 
+
 //formulaire de modification de compte
 
-if (isset($_SESSION["id"][0]) and isset($_POST['mdp'])) {
+if (isset($_POST["action"])) {
     if ($_POST["action"] == "modifier") {
-        $id = $_SESSION['id'][0]; // $id is now defined
-        $password = $_POST['mdp'];
-        $mail = $_POST['email'];
-        $pseudo = $_POST['user'];
-        //echo $id;
-        $sql = "UPDATE `users` SET `mdp` = '" . $password . "', `email` = '" . $mail . "', `pseudo` = '" . $pseudo . "' WHERE `users`.`id` = '" . $id . "'";
-        //echo $sql; // inutile de tenter de debug ici
-        mysqli_query($c, $sql);
-        //mysqli_close($c);
-        //session_destroy();
-        echo "Votre compte a été mis à jour.";
+if (isset($_SESSION["id"][0] )) {
+    $id = $_SESSION['id'][0]; // $id is now defined
+    $password = $_POST['mdp'];
+    $mail = $_POST['email'];
+    $pseudo =  $_POST['user'];
+    //echo $id;
+    $sql = "UPDATE `users` SET `mdp` = '".$password."', `email` = '".$mail."', `pseudo` = '".$pseudo."' WHERE `users`.`id` = '".$id."'";
+    //echo $sql;
+    mysqli_query($c,$sql);
+    //mysqli_close($c);
+    //session_destroy();
+    echo "votre compte a été modifié.";
+}
     }
 }
 
@@ -95,18 +106,15 @@ if (isset($_SESSION["id"][0]) and isset($_POST['mdp'])) {
 //formulaire de suppression de compte
 
 if (isset($_GET["id"])) {
-
     $id = $_GET['id']; // $id is now defined
     //echo $id;
     $sql = "DELETE FROM users WHERE id='".$id."'";
     //echo $sql;
     mysqli_query($c,$sql);
     //mysqli_close($c);
-    session_destroy();
-    echo "votre compte a été supprimé.";
-    unset($_GET["id"]);
-    //sleep(5);
-    //header("refresh:10;url:.");
+    //session_destroy();
+    echo "<p>votre compte a été supprimé.</p>";
 }
+
 
 
