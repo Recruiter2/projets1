@@ -73,9 +73,9 @@ if (isset($_POST["action"])) {
                     //header("Location: ./?page=connexion");
                 }
             } else {
-                echo "Vous êtes connecté en tant que " . $_SESSION['username'] . "  ";
-                echo "err2 vous etes deja connecte?";
-                //header("Location: ./?page=connexion");
+                echo "erreur";
+                //echo " vous etes deja connecte?";
+                header("Location: ./?page=connexion");
 
             }
         }
