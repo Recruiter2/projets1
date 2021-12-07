@@ -12,9 +12,9 @@
 </head>
 
 <body>
-
-<h1><a class="button1" href ="index.php?page=home"> Arche </a></h1>
-
+<header>
+    <h1><a class="button1" href ="index.php?page=home"> Arche </a></h1>
+</header>
 <ul>
     <li ><a class="button" href ="index.php?page=creer">Créer post</a></li>
 

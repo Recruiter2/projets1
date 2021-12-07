@@ -38,11 +38,10 @@ function connexion($pseudo,$mdp) {
 
     //var_dump($reponse);
 
-    $sql = "SELECT id FROM `users` WHERE `pseudo` = '" . $pseudo . "' and `mdp`= '". $mdp ."'" ;
-    $exec_requete = mysqli_query($c,$sql);
-    $reponse2 = mysqli_fetch_array($exec_requete);
-    $_SESSION['id'] = $reponse2;
-
+    //$sql = "SELECT id FROM `users` WHERE `pseudo` = '" . $pseudo . "' and `mdp`= '". $mdp ."'" ;
+    //$exec_requete = mysqli_query($c,$sql);
+    //$reponse2 = mysqli_fetch_array($exec_requete);
+    //$_SESSION['id'] = $reponse;
     return $reponse['count(*)'];
 
 

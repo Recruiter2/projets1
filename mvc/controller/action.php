@@ -64,12 +64,12 @@ if (isset($_POST["action"])) {
                     //var_dump($_SESSION['role']);
                     if (isset($_SESSION['username'])) {
                         echo "<p>Bienvenu " . $_SESSION['username'] . "</p>";
-                    }
+                        }
                     //header("Location: .");
-                } else {
+                        } else {
                     echo "err1 erreur sur le mot de passe ou pseudo";
-                    echo "2 eme possibilité : erreur vous êtes déjà connecté en tant que : ";
-                    var_dump($_SESSION);
+                    //echo "2 eme possibilité : erreur vous êtes déjà connecté en tant que : ";
+                    //var_dump($_SESSION);
                     //header("Location: ./?page=connexion");
                 }
             } else {

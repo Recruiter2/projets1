@@ -1,13 +1,16 @@
-html {
-    background-color: #001D66;
+
+body{
+    background:linear-gradient(65deg,#fff,#000) no-repeat;
+}
+header{
+    background-color: #333333;
+    margin: 0px;
+    padding: 5px;
+    border-right: 20px ridge #FFFFFF;
 }
 
 h1 {
     color : white;
-}
-
-#ul_top_hypers li {
-    float: right;
 }
 h2 {
     color : white;
@@ -18,7 +21,10 @@ h2, form {
     margin-right: auto;
     width: 8em;
 }
-
+.form-control{
+    border-radius: 2px;
+    outline:none;
+}
 ul {
     color: #333333 ;
 }
@@ -96,4 +102,7 @@ p {
 
     margin-left: auto;
     margin-right: auto;
+}
+footer{
+
 }

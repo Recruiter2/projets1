@@ -13,3 +13,6 @@
     <br>
     <input type = "submit" value = "modifier">
 </form>
+
+<?php
+var_dump($_SESSION);
