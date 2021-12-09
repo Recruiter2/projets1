@@ -1,3 +1,5 @@
+<fieldset>
+    <legend><h2>Supprimer</h2></legend>
 <?php
 
 //var_dump($_SESSION ['id'][0]);
@@ -16,8 +18,10 @@ if (isset($_SESSION['loggedin'])) {
 echo "<h2>Supprimer mon compte</h2>";
 if (isset($_SESSION['connecte'])) {
     if ($_SESSION['connecte'] == true) {
-        echo "<p>Appuier sur supprimer pour supprimer votre compte : ";
+        echo "<p>Appuier sur &quotOK&quot pour supprimer votre compte : ";
 
-        echo "<a class='button' href=\"index.php?id=" . $_SESSION["id"][0] . "\">Delete</a></p>";
+        echo "<a class='button' href=\"index.php?id=" . $_SESSION["id"][0] . "\">OK</a></p>";
     }
 }
+?>
+</fieldset>
