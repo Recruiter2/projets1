@@ -105,48 +105,5 @@ function recup_role($pseu){
 
 
 
-/*function delete_topic()
-{
-    if (mysqli_connect_errno()) {
-        echo "Failed to connect to MySQL: " . mysqli_connect_error();
-    }
-    if ((isset($_GET["name"]) and recup_role($_GET["pseu"] == "admin" )){
-    $name = $_GET['name'];
-    $sql = "DELETE FROM name WHERE id='" . $name . "'";
-    mysqli_query($c, $sql);
-    echo "Le topic a été supprimé.";
-}
-}*/
+/**/
 
-function afficher_topic($categorie) {
-    global $c;
-      // 2/3 -> REQUETE
-    $sql = "SELECT * FROM `media` WHERE categorie = 'recette';";
-    $result = mysqli_query($c, $sql);
-
-
-    // 3/3 -> AFFICHAGE
-    // Récupère chaque ligne de la BD dans un tableau "$row"
-
-    echo "<div class=''><h2>".$categorie."</h2>";
-
-
-    while ($row = mysqli_fetch_assoc($result)) {
-        echo "<div class='topic'>";
-        $var3 = htmlspecialchars($row["titre"], ENT_QUOTES, 'UTF-8');
-        echo "<h3 class='ttopic'>" . $var3 . "</h3>";
-
-        $var4 =    htmlspecialchars($row["photo"], ENT_QUOTES, 'UTF-8');
-        echo "<p class='information'>". $var4 ;
-        $var5 = htmlspecialchars($row["information"], ENT_QUOTES, 'UTF-8');
-        echo  "<pre>" . $var5 . "</pre>";
-        $var6 = htmlspecialchars($row["createur"], ENT_QUOTES, 'UTF-8');
-        echo  $var6 ;
-        $var7 = htmlspecialchars($row["date"], ENT_QUOTES, 'UTF-8');
-        echo  " " . $var7 . "</p>";
-        echo "</div>";
-
-        //echo "<td><a class='button' href=\"index.php?action=delete&id=" . $row['id'] . "\">Delete</a></td>";
-    }
-    echo "</div>";
-}
