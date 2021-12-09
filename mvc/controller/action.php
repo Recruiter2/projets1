@@ -1,21 +1,27 @@
 <?php
 
-$isconnect = false;
-if (isset($_SESSION["connecte"])) {
-    if ($_SESSION["connecte"] == true) {
-        $isconnect = true;
-    }
-} else {
-    $isconnect = false;
-}
+//$isconnect = false;
+//if (isset($_SESSION["connecte"])) {
+//    if ($_SESSION["connecte"] == true) {
+//        $isconnect = true;
+//    }
+//} else {
+//    $isconnect = false;
+//}
 
-if (isset($_GET["connecte"])) {
-    if ($_GET["connecte"] == false) {
-        unset($_SESSION['username']);
-        unset($_SESSION['connecte']);
-        unset($_SESSION['role']);
-        header('location:.');
-    }
+if (isset($_GET["connecte"]) && $_GET["connecte"] == "false") {
+
+    var_dump($_SESSION);
+
+    //var_dump($_SESSION);
+
+    unset($_SESSION['username']);
+    unset($_SESSION['connecte']);
+    unset($_SESSION['role']);
+    session_destroy();
+    //$_SESSION['connecte'] = false;
+    //var_dump($_SESSION);
+    header('location:.');
 }
 
 
@@ -52,25 +58,64 @@ if (isset($_POST["action"])) {
                     $_SESSION['connecte'] = true;
                     $_SESSION['role'] = recup_role($_POST['pseudo']);
 
-                    var_dump($_SESSION['role']);
-                    echo "Bienvenu " . $_SESSION['username'];
+
+                    //var_dump($_SESSION['role']);
+
+                    //var_dump($_SESSION['role']);
+                    if (isset($_SESSION['username'])) {
+                        echo "<p>Bienvenu " . $_SESSION['username'] . "</p>";
+                        }
                     //header("Location: .");
-                } else {
+                        } else {
                     echo "err1 erreur sur le mot de passe ou pseudo";
-                    echo "2 eme possibilité : erreur vous êtes déjà connecté en tant que : ";
-                    var_dump($_SESSION);
+                    //echo "2 eme possibilité : erreur vous êtes déjà connecté en tant que : ";
+                    //var_dump($_SESSION);
                     //header("Location: ./?page=connexion");
                 }
             } else {
-                echo "Vous êtes connecté en tant que " . $_SESSION['username'] . "  ";
-                echo "err2 vous etes deja connecte?";
-                //header("Location: ./?page=connexion");
+                echo "erreur";
+                //echo " vous etes deja connecte?";
+                header("Location: ./?page=connexion");
 
             }
         }
     }
 }
 
+
+//formulaire de modification de compte
+
+if (isset($_POST["action"])) {
+    if ($_POST["action"] == "modifier") {
+if (isset($_SESSION["id"][0] )) {
+    $id = $_SESSION['id'][0]; // $id is now defined
+    $password = $_POST['mdp'];
+    $mail = $_POST['email'];
+    $pseudo =  $_POST['user'];
+    //echo $id;
+    $sql = "UPDATE `users` SET `mdp` = '".$password."', `email` = '".$mail."', `pseudo` = '".$pseudo."' WHERE `users`.`id` = '".$id."'";
+    //echo $sql;
+    mysqli_query($c,$sql);
+    //mysqli_close($c);
+    //session_destroy();
+    echo "votre compte a été modifié.";
+}
+    }
+}
+
+
+//formulaire de suppression de compte
+
+if (isset($_GET["id"])) {
+    $id = $_GET['id']; // $id is now defined
+    //echo $id;
+    $sql = "DELETE FROM users WHERE id='".$id."'";
+    //echo $sql;
+    mysqli_query($c,$sql);
+    //mysqli_close($c);
+    //session_destroy();
+    echo "<p>votre compte a été supprimé.</p>";
+}
 
 
 
