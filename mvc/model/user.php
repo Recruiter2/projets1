@@ -116,16 +116,16 @@ function suppression ($id){
      
 }
 
-/*function delete_topic()
+function delete_topic($c)
 {
     if (mysqli_connect_errno()) {
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
-    if ((isset($_GET["name"]) and recup_role($_GET["pseu"] == "admin" )){
-    $name = $_GET['name'];
-    $sql = "DELETE FROM name WHERE id='" . $name . "'";
-    mysqli_query($c, $sql);
+    if ((isset($_GET["name"]) and recup_role($_GET["pseu"]) == "admin" )){
+        $name = $_GET['name'];
+        $sql = "DELETE FROM name WHERE id='" . $name . "'";
+        mysqli_query($c, $sql);
     echo "Le topic a été supprimé.";
 }
-}*/
+}
 
