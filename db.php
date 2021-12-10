@@ -3,7 +3,7 @@
 
 
 
-$c = mysqli_connect("localhost", "root", "", "projets1");
+$c = mysqli_connect("localhost", "l2", "L2", "projets1");
 mysqli_set_charset($c, "utf8");
 
 if ($c->connect_error) {

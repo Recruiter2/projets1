@@ -1,14 +1,4 @@
 <?php
-
-//$isconnect = false;
-//if (isset($_SESSION["connecte"])) {
-//    if ($_SESSION["connecte"] == true) {
-//        $isconnect = true;
-//    }
-//} else {
-//    $isconnect = false;
-//}
-
 if (isset($_GET["connecte"]) && $_GET["connecte"] == "false") {
 
     var_dump($_SESSION);
@@ -57,13 +47,14 @@ if (isset($_POST["action"])) {
                     $_SESSION['username'] = $_POST['pseudo'];
                     $_SESSION['connecte'] = true;
                     $_SESSION['role'] = recup_role($_POST['pseudo']);
-
-
-                    //var_dump($_SESSION['role']);
+                    $_SESSION['id_user'] = recup_id_user($_POST['pseudo']);
 
                     //var_dump($_SESSION['role']);
 
-                    echo "<p>Bienvenu " . $_SESSION['username'] ."</p>";
+                    //var_dump($_SESSION['role']);
+                    if (isset($_SESSION['username'])) {
+                        echo "<p>Bienvenu " . $_SESSION['username'] . "</p>";
+                    }
                     //header("Location: .");
                 } else {
                     echo "err1 erreur sur le mot de passe ou pseudo";
@@ -72,9 +63,9 @@ if (isset($_POST["action"])) {
                     //header("Location: ./?page=connexion");
                 }
             } else {
-                echo "Vous êtes connecté en tant que " . $_SESSION['username'] . "  ";
-                echo "err2 vous etes deja connecte?";
-                //header("Location: ./?page=connexion");
+                echo "erreur";
+                //echo " vous etes deja connecte?";
+                header("Location: ./?page=connexion");
 
             }
         }
@@ -91,12 +82,7 @@ if (isset($_SESSION["id"][0] )) {
     $password = $_POST['mdp'];
     $mail = $_POST['email'];
     $pseudo =  $_POST['user'];
-    //echo $id;
-    $sql = "UPDATE `users` SET `mdp` = '".$password."', `email` = '".$mail."', `pseudo` = '".$pseudo."' WHERE `users`.`id` = '".$id."'";
-    //echo $sql;
-    mysqli_query($c,$sql);
-    //mysqli_close($c);
-    //session_destroy();
+    modification_compte($id, $pseudo, $password, $mail); 
     echo "votre compte a été modifié.";
 }
     }
@@ -108,13 +94,8 @@ if (isset($_SESSION["id"][0] )) {
 if (isset($_GET["id"])) {
     $id = $_GET['id']; // $id is now defined
     //echo $id;
-    $sql = "DELETE FROM users WHERE id='".$id."'";
-    //echo $sql;
-    mysqli_query($c,$sql);
+    suppression($id);
     //mysqli_close($c);
     //session_destroy();
     echo "<p>votre compte a été supprimé.</p>";
 }
-
-
-

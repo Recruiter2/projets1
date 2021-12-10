@@ -44,16 +44,6 @@ function connexion($pseudo,$mdp) {
     $_SESSION['id'] = $reponse2;
 
     return $reponse['count(*)'];
-    return $_SESSION;
-
-
-
-    var_dump($exec_requete);
-    /*$res = [];
-    while($row = mysqli_fetch_assoc($result)){
-        $res[] = $row;
-    }
-    return $res;*/
 }
 
 
@@ -89,7 +79,13 @@ function delete_user_db() {
 
 }
 
-
+function recup_id_user($user){
+    global $c;
+    $sql = "SELECT id FROM `users` WHERE pseudo='$user'";
+    $resultat = mysqli_query($c,$sql);
+    $row = mysqli_fetch_assoc($resultat);
+    return $row["id"];
+}
 
 function recup_role($pseu){
     global $c;
@@ -104,17 +100,32 @@ function recup_role($pseu){
     return $role;
 }
 
-
+function modification_compte ($id, $pseudo, $password, $mail){
+    global $c;
+    $sql = "UPDATE `users` SET `mdp` = '".$password."', `email` = '".$mail."', `pseudo` = '".$pseudo."' WHERE `users`.`id` = '".$id."'";
+    //echo $sql;
+    mysqli_query($c,$sql);
+}
+function suppression ($id){
+    global $c;
+    if (!recup_role($pseu) == "admin"){
+    $sql = "DELETE FROM users WHERE id='".$id."'";
+    mysqli_query($c,$sql);}
+    else
+        echo "on peu pas supprimer le compte admin";
+     
+}
 
 /*function delete_topic()
 {
     if (mysqli_connect_errno()) {
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
-    if (isset($_GET["name"])) && recup_role($_GET["pseu"]) == "admin" {
+    if ((isset($_GET["name"]) and recup_role($_GET["pseu"] == "admin" )){
     $name = $_GET['name'];
     $sql = "DELETE FROM name WHERE id='" . $name . "'";
     mysqli_query($c, $sql);
     echo "Le topic a été supprimé.";
 }
 }*/
+
